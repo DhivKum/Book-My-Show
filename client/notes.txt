@@ -3,3 +3,7 @@ npm create vite@latest client -y
 cd client
 npm install
 npm run dev
+
+
+Server
+npm init -y

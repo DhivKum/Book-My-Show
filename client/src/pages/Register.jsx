@@ -4,13 +4,16 @@ import { Form, Input, Button, Divider } from 'antd'
 import { UserOutlined, MailOutlined, LockOutlined, GoogleOutlined, FacebookOutlined } from '@ant-design/icons'
 
 function Register() {
+  const registeredData = (values) => {
+    console.log('Received values:', values);
+  }
   return (
     <div className="login-container enhanced-login">
       <div className="login-logo">
         <img src="https://cdn-icons-png.flaticon.com/512/747/747376.png" alt="User Login" height="60" />
       </div>
       <h2 className="login-title">Register to your Account</h2>
-      <Form className="login-form">
+      <Form className="login-form" onFinish={registeredData}>
         <Form.Item name="name" rules={[{ required: true, message: 'Please enter your name!' }]}
         >
           <Input prefix={<UserOutlined />} placeholder="Name" size="large" />
@@ -29,6 +32,7 @@ function Register() {
         <Form.Item>
           <Button type="primary" htmlType="submit" className="login-btn">
             Register
+            
           </Button>
         </Form.Item>
         <Divider plain className="login-divider">or continue with</Divider>
