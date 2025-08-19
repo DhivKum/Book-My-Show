@@ -1,11 +1,40 @@
 
 import React from 'react'
-import { Form, Input, Button, Divider } from 'antd'
+import { Form, Input, Button, Divider, message } from 'antd'
 import { UserOutlined, MailOutlined, LockOutlined, GoogleOutlined, FacebookOutlined } from '@ant-design/icons'
+import { RegisterUser } from '../apiCalls/users';
+import '../App.css';
+
+message.config({
+  top: 60, // distance from top in pixels
+  duration: 2, // seconds
+  maxCount: 3,
+});
 
 function Register() {
-  const registeredData = (values) => {
-    console.log('Received values:', values);
+  const registeredData = async (values) => {
+    // console.log('Received values:', values);
+    
+    try
+    {
+      const response = await RegisterUser(values);
+      if(response)
+      {
+        message.success("User registered successfully");
+        console.log("Response data:", response);
+        // Optionally redirect to login or home page
+      }
+      else
+      {
+        message.error("User already exists");
+      }
+      
+    }
+    catch(err)
+    {
+      message.error("Registration failed");
+      console.error("Registration failed:", err);
+    }
   }
   return (
     <div className="login-container enhanced-login">

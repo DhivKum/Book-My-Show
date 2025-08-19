@@ -286,3 +286,12 @@ body {
 .read-the-docs {
   color: #888;
 }
+
+.ant-message {
+  z-index: 9999 !important;
+  position: fixed !important;
+  top: 60px !important; /* match your message.config */
+  left: 0;
+  width: 100vw;
+  pointer-events: none;
+}

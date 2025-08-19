@@ -2,6 +2,10 @@ const express = require('express');
 const app = express();
 const connectDB = require('./config/dbconfig');
 const userRoutes = require('./routes/userRoutes');
+// const cors = require('cors');
+// app.use(cors({
+//   origin: '*',
+// }));
 app.use(express.json());
 app.use("/api/users", userRoutes);
 
